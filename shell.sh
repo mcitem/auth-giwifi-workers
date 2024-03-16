@@ -1,8 +1,8 @@
 #!/bin/bash
-baseIP='192.168.99.120'
-baseURL='http://'$baseIP 
+
 
 # config
+baseIP='192.168.99.120'
 serverurl=''
 username=''
 password=''
@@ -12,7 +12,7 @@ curl -X POST -d 'wlanuserip=10.13.96.102&wlanacname=LNSF2&type=2&interval=120' h
 
 # serverurl='http://127.0.0.1:8787' #debug
 
-
+baseURL='http://'$baseIP 
 curl --output login.html -H 'User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36 Edg/122.0.0.0' -s $baseURL'/gportal/web/login'
 Gstart='<!--用户登录开始-->'
 Gend='<!--用户登录结束-->'
