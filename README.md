@@ -61,6 +61,5 @@ serverurl='http://127.0.0.1:8787'
 ## 其他实现
 nodejs
 - [Giraffele/Auto-Giwifi](https://github.com/GiraffeLe/Auto-Giwifi)
-- 
 python
 - [mcitem/auth-giwifi-python](https://github.com/mcitem/auto-giwifi-python)
