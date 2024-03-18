@@ -1,8 +1,15 @@
-# 说明
-本项目适用于 河南理工大学HPU和广东某不知名学校 校园网giwifi自动认证登录
-本项目利用cloudflare worker进行认证时的远程、html解析、AES加密，并将结果以curl提交到认证服务器实现自动认证
+## 说明
+这是一个linux下只需要安装curl 就能使用的 寰创Giwifi 自动登录脚本
 
-# 使用
+适用于小闪存的路由器比如8mb 的K2 不需要安装20mb起步的python或者nodejs
+
+可用于: 河南理工大学 HPU
+       岭南师范学院 LNU
+
+使用前提: 临时放行接口开放可用
+
+校园网可访问workers，否则需要自定义域名访问
+## 部署&使用
 将worker.js用wrangler 的方式部署到cloudflare worker
 
 安装 Wrangler
@@ -20,7 +27,7 @@ wrangler init --from-dash <yourworker-name>
 ```
 wrangler init --from-dash giwifi-encrypt
 ```
-## 部署
+依赖
 ```
 npm i cheerio
 npm i crypto-js
@@ -29,22 +36,31 @@ npm i cloudflare-worker-request-data
 
 替换src/worker.js的代码
 
-发布您的 Wrangler 项目
 将您的项目部署到 Cloudflare 的全球网络：
 ```
 wrangler deploy
 ```
 
 ## 使用
+
+
 edit shell.sh#config 
+
 ```
 bash shell.sh
 ```
 
-# 开发
+## 开发
 ```
 wrangler dev
 ```
 ```
 serverurl='http://127.0.0.1:8787'
 ```
+
+## 其他实现
+nodejs
+- [Giraffele/Auto-Giwifi](https://github.com/GiraffeLe/Auto-Giwifi)
+- 
+python
+- [mcitem/auth-giwifi-python](https://github.com/mcitem/auto-giwifi-python)
