@@ -8,18 +8,17 @@ username=''
 password=''
 
 # 临时放行
-curl -X POST -d 'wlanuserip=10.13.96.102&wlanacname=LNSF2&type=2&interval=120' http://as.gwifi.com.cn/gportal/web/sendPassby
-
+wget --post-data 'wlanuserip=10.13.96.102&wlanacname=LNSF2&type=2&interval=120' http://as.gwifi.com.cn/gportal/web/sendPassby
 # serverurl='http://127.0.0.1:8787' #debug
 
 baseURL='http://'$baseIP 
-curl --output login.html -H 'User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36 Edg/122.0.0.0' -s $baseURL'/gportal/web/login'
+wget --user-agent="Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36 Edg/122.0.0.0" --output-document=login.html --quiet "$baseURL/gportal/web/login"
 Gstart='<!--用户登录开始-->'
 Gend='<!--用户登录结束-->'
 sed -n "/$Gstart/,/$Gend/p" login.html > frmLogin.html
 echo "|$username|$password" >> frmLogin.html
 sleep 2s
-res=$(curl -X POST -d @frmLogin.html -H "Content-Type: application/text"  $serverurl)
+res=$(wget --post-file=frmLogin.html --header="Content-Type: application/text" --output-document=- $serverurl)
 IFS='|' read -ra ADDR <<< "$res"
 #debug
 # echo "round: ${ADDR[0]}"
@@ -29,11 +28,6 @@ IFS='|' read -ra ADDR <<< "$res"
 # echo "oridata: ${ADDR[4]}"
 echo ''
 dj='data='${ADDR[3]}'&iv='${ADDR[1]}
-res=$(curl $baseURL'/gportal/web/authLogin?round='${ADDR[0]} \
-  -H 'Content-Type: application/x-www-form-urlencoded;' \
-  -H 'User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36 Edg/122.0.0.0' \
-  --data-raw  $dj \
-  -s \
-  )
+res=$(wget --header="Content-Type: application/x-www-form-urlencoded;" --header="User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36 Edg/122.0.0.0" --post-data="$dj" --quiet --output-document=- "$baseURL/gportal/web/authLogin?round=${ADDR[0]}")
 
-curl $serverurl'/unicodejson' -H "Content-Type: application/text" -d $res
+wget --header="Content-Type: application/text" --post-data="$res" --output-document=- "$serverurl/unicodejson"
