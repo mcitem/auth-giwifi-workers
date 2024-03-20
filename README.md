@@ -11,6 +11,18 @@
 使用前提: 临时放行接口开放可用
 
 校园网可访问workers，否则需要自定义域名访问
+## 直接使用作者workers地址
+e
+#config.serverurl 二选一使用即可
+```
+serverurl='https://giwifi-encrypt.mcitem.workers.dev'
+serverurl='https://giwifi-encrypt.mcitem.cn'
+```
+```
+bash <script.sh>
+bash curl.sh
+bash wget.sh
+```
 ## 部署worker&使用
 将worker.js用wrangler 的方式部署到cloudflare worker
 
