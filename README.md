@@ -76,3 +76,6 @@ nodejs
 
 python
 - [mcitem/auth-giwifi-python](https://github.com/mcitem/auto-giwifi-python)
+
+shell(openwrt需要依赖openssl-util、wget-ssl)
+- [GiwifiScript](https://github.com/GiraffeLe/GiwifiScript)
