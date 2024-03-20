@@ -11,7 +11,7 @@
 使用前提: 临时放行接口开放可用
 
 校园网可访问workers，否则需要自定义域名访问
-## 部署&使用
+## 部署worker&使用
 将worker.js用wrangler 的方式部署到cloudflare worker
 
 安装 Wrangler
@@ -47,10 +47,16 @@ wrangler deploy
 
 
 edit shell.sh#config 
+示例地址(也可以直接使用)(当然前提是这个workers访问量没有超出免费限制)
+serverurl='https://giwifi-encrypt.mcitem.workers.dev'
+serverurl='https://giwifi-encrypt.mcitem.cn'
 
 ```
-bash shell.sh
+bash <script.sh>
+bash curl.sh
+bash wget.sh
 ```
+
 
 ## 开发
 ```
