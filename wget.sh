@@ -8,7 +8,7 @@ username=''
 password=''
 
 # 临时放行
-wget --post-data 'wlanuserip=10.13.96.102&wlanacname=LNSF2&type=2&interval=120' http://as.gwifi.com.cn/gportal/web/sendPassby
+wget --post-data 'wlanuserip=10.13.96.102&wlanacname=LNSF2&type=2&interval=120' -q -O - http://as.gwifi.com.cn/gportal/web/sendPassby
 # serverurl='http://127.0.0.1:8787' #debug
 
 baseURL='http://'$baseIP 
@@ -30,4 +30,4 @@ echo ''
 dj='data='${ADDR[3]}'&iv='${ADDR[1]}
 res=$(wget --header="Content-Type: application/x-www-form-urlencoded;" --header="User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36 Edg/122.0.0.0" --post-data="$dj" --quiet --output-document=- "$baseURL/gportal/web/authLogin?round=${ADDR[0]}")
 
-wget --header="Content-Type: application/text" --post-data="$res" --output-document=- "$serverurl/unicodejson"
+wget --header="Content-Type: application/text" --post-data="$res" -q -O - "$serverurl/unicodejson"
