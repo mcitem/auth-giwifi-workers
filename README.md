@@ -12,8 +12,7 @@
 
 校园网可访问workers，否则需要自定义域名访问
 ## 直接使用作者workers地址
-e
-#config.serverurl 二选一使用即可
+edit#config.serverurl 二选一使用即可
 ```
 serverurl='https://giwifi-encrypt.mcitem.workers.dev'
 serverurl='https://giwifi-encrypt.mcitem.cn'
