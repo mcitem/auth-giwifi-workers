@@ -1,5 +1,7 @@
 ## 说明
-这是一个linux下只需要安装curl 就能使用的 寰创Giwifi 自动登录脚本
+这是一个linux下只需要安装curl/wget就能使用的 寰创Giwifi 自动登录脚本
+
+由于openwrt自带wget,所以可以不需要安装任何依赖就能用wget实现认证
 
 适用于小闪存的路由器比如8mb 的K2 不需要安装20mb起步的python或者nodejs
 
