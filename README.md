@@ -50,7 +50,7 @@ edit shell.sh#config
 
 示例地址(也可以直接使用)(当然前提是这个workers访问量没有超出免费限制)
 
-二选一使用即可
+#config.serverurl 二选一使用即可
 ```
 serverurl='https://giwifi-encrypt.mcitem.workers.dev'
 serverurl='https://giwifi-encrypt.mcitem.cn'
