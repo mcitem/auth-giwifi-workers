@@ -3,7 +3,7 @@
 
 # config
 baseIP='192.168.99.120'
-serverurl=''
+serverurl='https://giwifi-encrypt.mcitem.workers.dev'
 username=''
 password=''
 
